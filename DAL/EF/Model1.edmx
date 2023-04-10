@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BagAndBaggageTransportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="activitylogs">
+          <Key>
+            <PropertyRef Name="activity_log_id" />
+          </Key>
+          <Property Name="activity_log_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="activity_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="admins">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="admin_DOB" Type="date" Nullable="false" />
+          <Property Name="admin_address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_DOB" Type="date" Nullable="false" />
+          <Property Name="customer_address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_phone" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="drivers">
+          <Key>
+            <PropertyRef Name="driver_id" />
+          </Key>
+          <Property Name="driver_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="driver_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="driver_DOB" Type="date" Nullable="false" />
+          <Property Name="driver_phone" Type="int" Nullable="false" />
+          <Property Name="license_no" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="driver_nid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="vechile_no" Type="int" Nullable="false" />
+          <Property Name="vechile_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="manager_id" Type="int" />
+        </EntityType>
+        <EntityType Name="labours">
+          <Key>
+            <PropertyRef Name="labour_id" />
+          </Key>
+          <Property Name="labour_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="labour_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="labour_phone" Type="int" Nullable="false" />
+          <Property Name="labour_address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="labourworks">
+          <Key>
+            <PropertyRef Name="labour_work_id" />
+          </Key>
+          <Property Name="labour_work_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="managers">
+          <Key>
+            <PropertyRef Name="manager_id" />
+          </Key>
+          <Property Name="manager_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="manager_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="manager_address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="manager_phone" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reviews">
+          <Key>
+            <PropertyRef Name="review_id" />
+          </Key>
+          <Property Name="review_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comment" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="review_date" Type="date" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tokens">
+          <Key>
+            <PropertyRef Name="token_id" />
+          </Key>
+          <Property Name="token_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="token_key" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="expire_date" Type="datetime" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tripes">
+          <Key>
+            <PropertyRef Name="tripe_id" />
+          </Key>
+          <Property Name="tripe_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="end_location" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="start_location" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="vechile_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+          <Property Name="labour_number" Type="int" />
+          <Property Name="dateandtime" Type="datetime" Nullable="false" />
+          <Property Name="product_discription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="driver_id" Type="int" />
+          <Property Name="labour_id" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_admins_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="admins" Type="Self.admins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="admins">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customers_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="customers" Type="Self.customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="customers">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_drivers_managers">
+          <End Role="managers" Type="Self.managers" Multiplicity="0..1" />
+          <End Role="drivers" Type="Self.drivers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="managers">
+              <PropertyRef Name="manager_id" />
+            </Principal>
+            <Dependent Role="drivers">
+              <PropertyRef Name="manager_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_drivers_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="drivers" Type="Self.drivers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="drivers">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_labours_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="labours" Type="Self.labours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="labours">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_managers_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="managers" Type="Self.managers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="managers">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_reviews_customers">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="reviews" Type="Self.reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="reviews">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tokens_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="tokens" Type="Self.tokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="tokens">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tripes_customers">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="tripes" Type="Self.tripes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="tripes">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tripes_drivers">
+          <End Role="drivers" Type="Self.drivers" Multiplicity="0..1" />
+          <End Role="tripes" Type="Self.tripes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="drivers">
+              <PropertyRef Name="driver_id" />
+            </Principal>
+            <Dependent Role="tripes">
+              <PropertyRef Name="driver_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BagAndBaggageTransportModelStoreContainer">
+          <EntitySet Name="activitylogs" EntityType="Self.activitylogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="admins" EntityType="Self.admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="drivers" EntityType="Self.drivers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="labours" EntityType="Self.labours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="labourworks" EntityType="Self.labourworks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="managers" EntityType="Self.managers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reviews" EntityType="Self.reviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tokens" EntityType="Self.tokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tripes" EntityType="Self.tripes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_admins_users" Association="Self.FK_admins_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="admins" EntitySet="admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customers_users" Association="Self.FK_customers_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="customers" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_drivers_managers" Association="Self.FK_drivers_managers">
+            <End Role="managers" EntitySet="managers" />
+            <End Role="drivers" EntitySet="drivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_drivers_users" Association="Self.FK_drivers_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="drivers" EntitySet="drivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_labours_users" Association="Self.FK_labours_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="labours" EntitySet="labours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_managers_users" Association="Self.FK_managers_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="managers" EntitySet="managers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reviews_customers" Association="Self.FK_reviews_customers">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="reviews" EntitySet="reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tokens_users" Association="Self.FK_tokens_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="tokens" EntitySet="tokens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tripes_customers" Association="Self.FK_tripes_customers">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="tripes" EntitySet="tripes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tripes_drivers" Association="Self.FK_tripes_drivers">
+            <End Role="drivers" EntitySet="drivers" />
+            <End Role="tripes" EntitySet="tripes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BagAndBaggageTransportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="activitylog">
+          <Key>
+            <PropertyRef Name="activity_log_id" />
+          </Key>
+          <Property Name="activity_log_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="activity_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="admin_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="admin_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_admins_users" FromRole="admins" ToRole="users" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="customer_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_phone" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_customers_users" FromRole="customers" ToRole="users" />
+          <NavigationProperty Name="reviews" Relationship="Self.FK_reviews_customers" FromRole="customers" ToRole="reviews" />
+          <NavigationProperty Name="tripes" Relationship="Self.FK_tripes_customers" FromRole="customers" ToRole="tripes" />
+        </EntityType>
+        <EntityType Name="driver">
+          <Key>
+            <PropertyRef Name="driver_id" />
+          </Key>
+          <Property Name="driver_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="driver_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="driver_DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="driver_phone" Type="Int32" Nullable="false" />
+          <Property Name="license_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="driver_nid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vechile_no" Type="Int32" Nullable="false" />
+          <Property Name="vechile_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="manager_id" Type="Int32" />
+          <NavigationProperty Name="manager" Relationship="Self.FK_drivers_managers" FromRole="drivers" ToRole="managers" />
+          <NavigationProperty Name="user" Relationship="Self.FK_drivers_users" FromRole="drivers" ToRole="users" />
+          <NavigationProperty Name="tripes" Relationship="Self.FK_tripes_drivers" FromRole="drivers" ToRole="tripes" />
+        </EntityType>
+        <EntityType Name="labour">
+          <Key>
+            <PropertyRef Name="labour_id" />
+          </Key>
+          <Property Name="labour_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="labour_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="labour_phone" Type="Int32" Nullable="false" />
+          <Property Name="labour_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_labours_users" FromRole="labours" ToRole="users" />
+        </EntityType>
+        <EntityType Name="labourwork">
+          <Key>
+            <PropertyRef Name="labour_work_id" />
+          </Key>
+          <Property Name="labour_work_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="manager">
+          <Key>
+            <PropertyRef Name="manager_id" />
+          </Key>
+          <Property Name="manager_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="manager_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="manager_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="manager_phone" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="drivers" Relationship="Self.FK_drivers_managers" FromRole="managers" ToRole="drivers" />
+          <NavigationProperty Name="user" Relationship="Self.FK_managers_users" FromRole="managers" ToRole="users" />
+        </EntityType>
+        <EntityType Name="review">
+          <Key>
+            <PropertyRef Name="review_id" />
+          </Key>
+          <Property Name="review_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="review_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_reviews_customers" FromRole="reviews" ToRole="customers" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tripe">
+          <Key>
+            <PropertyRef Name="tripe_id" />
+          </Key>
+          <Property Name="tripe_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="end_location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="start_location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vechile_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="labour_number" Type="Int32" />
+          <Property Name="dateandtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="product_discription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="driver_id" Type="Int32" />
+          <Property Name="labour_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_tripes_customers" FromRole="tripes" ToRole="customers" />
+          <NavigationProperty Name="driver" Relationship="Self.FK_tripes_drivers" FromRole="tripes" ToRole="drivers" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="admins" Relationship="Self.FK_admins_users" FromRole="users" ToRole="admins" />
+          <NavigationProperty Name="customers" Relationship="Self.FK_customers_users" FromRole="users" ToRole="customers" />
+          <NavigationProperty Name="drivers" Relationship="Self.FK_drivers_users" FromRole="users" ToRole="drivers" />
+          <NavigationProperty Name="labours" Relationship="Self.FK_labours_users" FromRole="users" ToRole="labours" />
+          <NavigationProperty Name="managers" Relationship="Self.FK_managers_users" FromRole="users" ToRole="managers" />
+          <NavigationProperty Name="tokens" Relationship="BagAndBaggageTransportModel.FK_tokens_users" FromRole="user" ToRole="token" />
+        </EntityType>
+        <Association Name="FK_admins_users">
+          <End Role="users" Type="Self.user" Multiplicity="1" />
+          <End Role="admins" Type="Self.admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="admins">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customers_users">
+          <End Role="users" Type="Self.user" Multiplicity="1" />
+          <End Role="customers" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="customers">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_reviews_customers">
+          <End Role="customers" Type="Self.customer" Multiplicity="1" />
+          <End Role="reviews" Type="Self.review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="reviews">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tripes_customers">
+          <End Role="customers" Type="Self.customer" Multiplicity="1" />
+          <End Role="tripes" Type="Self.tripe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="tripes">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_drivers_managers">
+          <End Role="managers" Type="Self.manager" Multiplicity="0..1" />
+          <End Role="drivers" Type="Self.driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="managers">
+              <PropertyRef Name="manager_id" />
+            </Principal>
+            <Dependent Role="drivers">
+              <PropertyRef Name="manager_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_drivers_users">
+          <End Role="users" Type="Self.user" Multiplicity="1" />
+          <End Role="drivers" Type="Self.driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="drivers">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tripes_drivers">
+          <End Role="drivers" Type="Self.driver" Multiplicity="0..1" />
+          <End Role="tripes" Type="Self.tripe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="drivers">
+              <PropertyRef Name="driver_id" />
+            </Principal>
+            <Dependent Role="tripes">
+              <PropertyRef Name="driver_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_labours_users">
+          <End Role="users" Type="Self.user" Multiplicity="1" />
+          <End Role="labours" Type="Self.labour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="labours">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_managers_users">
+          <End Role="users" Type="Self.user" Multiplicity="1" />
+          <End Role="managers" Type="Self.manager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="managers">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BagAndBaggageTransportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="activitylogs" EntityType="Self.activitylog" />
+          <EntitySet Name="admins" EntityType="Self.admin" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="drivers" EntityType="Self.driver" />
+          <EntitySet Name="labours" EntityType="Self.labour" />
+          <EntitySet Name="labourworks" EntityType="Self.labourwork" />
+          <EntitySet Name="managers" EntityType="Self.manager" />
+          <EntitySet Name="reviews" EntityType="Self.review" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tripes" EntityType="Self.tripe" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK_admins_users" Association="Self.FK_admins_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="admins" EntitySet="admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customers_users" Association="Self.FK_customers_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="customers" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reviews_customers" Association="Self.FK_reviews_customers">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="reviews" EntitySet="reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tripes_customers" Association="Self.FK_tripes_customers">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="tripes" EntitySet="tripes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_drivers_managers" Association="Self.FK_drivers_managers">
+            <End Role="managers" EntitySet="managers" />
+            <End Role="drivers" EntitySet="drivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_drivers_users" Association="Self.FK_drivers_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="drivers" EntitySet="drivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tripes_drivers" Association="Self.FK_tripes_drivers">
+            <End Role="drivers" EntitySet="drivers" />
+            <End Role="tripes" EntitySet="tripes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_labours_users" Association="Self.FK_labours_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="labours" EntitySet="labours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_managers_users" Association="Self.FK_managers_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="managers" EntitySet="managers" />
+          </AssociationSet>
+          <EntitySet Name="tokens" EntityType="BagAndBaggageTransportModel.token" />
+          <AssociationSet Name="FK_tokens_users" Association="BagAndBaggageTransportModel.FK_tokens_users">
+            <End Role="user" EntitySet="users" />
+            <End Role="token" EntitySet="tokens" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="token">
+          <Key>
+            <PropertyRef Name="token_id" />
+          </Key>
+          <Property Name="token_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="token_key" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="expire_date" Type="DateTime" Precision="3" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="BagAndBaggageTransportModel.FK_tokens_users" FromRole="token" ToRole="user" />
+        </EntityType>
+        <Association Name="FK_tokens_users">
+          <End Type="BagAndBaggageTransportModel.user" Role="user" Multiplicity="1" />
+          <End Type="BagAndBaggageTransportModel.token" Role="token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="token">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BagAndBaggageTransportModelStoreContainer" CdmEntityContainer="BagAndBaggageTransportEntities">
+          <EntitySetMapping Name="activitylogs">
+            <EntityTypeMapping TypeName="BagAndBaggageTransportModel.activitylog">
+              <MappingFragment StoreEntitySet="activitylogs">
+                <ScalarProperty Name="activity_log_id" ColumnName="activity_log_id" />
+                <ScalarProperty Name="activity_type" ColumnName="activity_type" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="BagAndBaggageTransportModel.admin">
+              <MappingFragment StoreEntitySet="admins">
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="admin_name" ColumnName="admin_name" />
+                <ScalarProperty Name="admin_DOB" ColumnName="admin_DOB" />
+                <ScalarProperty Name="admin_address" ColumnName="admin_address" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="BagAndBaggageTransportModel.customer">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+                <ScalarProperty Name="customer_DOB" ColumnName="customer_DOB" />
+                <ScalarProperty Name="customer_address" ColumnName="customer_address" />
+                <ScalarProperty Name="customer_phone" ColumnName="customer_phone" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="drivers">
+            <EntityTypeMapping TypeName="BagAndBaggageTransportModel.driver">
+              <MappingFragment StoreEntitySet="drivers">
+                <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+                <ScalarProperty Name="driver_name" ColumnName="driver_name" />
+                <ScalarProperty Name="driver_DOB" ColumnName="driver_DOB" />
+                <ScalarProperty Name="driver_phone" ColumnName="driver_phone" />
+                <ScalarProperty Name="license_no" ColumnName="license_no" />
+                <ScalarProperty Name="driver_nid" ColumnName="driver_nid" />
+                <ScalarProperty Name="vechile_no" ColumnName="vechile_no" />
+                <ScalarProperty Name="vechile_type" ColumnName="vechile_type" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="manager_id" ColumnName="manager_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="labours">
+            <EntityTypeMapping TypeName="BagAndBaggageTransportModel.labour">
+              <MappingFragment StoreEntitySet="labours">
+                <ScalarProperty Name="labour_id" ColumnName="labour_id" />
+                <ScalarProperty Name="labour_name" ColumnName="labour_name" />
+                <ScalarProperty Name="labour_phone" ColumnName="labour_phone" />
+                <ScalarProperty Name="labour_address" ColumnName="labour_address" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="labourworks">
+            <EntityTypeMapping TypeName="BagAndBaggageTransportModel.labourwork">
+              <MappingFragment StoreEntitySet="labourworks">
+                <ScalarProperty Name="labour_work_id" ColumnName="labour_work_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="managers">
+            <EntityTypeMapping TypeName="BagAndBaggageTransportModel.manager">
+              <MappingFragment StoreEntitySet="managers">
+                <ScalarProperty Name="manager_id" ColumnName="manager_id" />
+                <ScalarProperty Name="manager_name" ColumnName="manager_name" />
+                <ScalarProperty Name="manager_address" ColumnName="manager_address" />
+                <ScalarProperty Name="manager_phone" ColumnName="manager_phone" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reviews">
+            <EntityTypeMapping TypeName="BagAndBaggageTransportModel.review">
+              <MappingFragment StoreEntitySet="reviews">
+                <ScalarProperty Name="review_id" ColumnName="review_id" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="review_date" ColumnName="review_date" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BagAndBaggageTransportModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tripes">
+            <EntityTypeMapping TypeName="BagAndBaggageTransportModel.tripe">
+              <MappingFragment StoreEntitySet="tripes">
+                <ScalarProperty Name="tripe_id" ColumnName="tripe_id" />
+                <ScalarProperty Name="end_location" ColumnName="end_location" />
+                <ScalarProperty Name="start_location" ColumnName="start_location" />
+                <ScalarProperty Name="vechile_type" ColumnName="vechile_type" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="labour_number" ColumnName="labour_number" />
+                <ScalarProperty Name="dateandtime" ColumnName="dateandtime" />
+                <ScalarProperty Name="product_discription" ColumnName="product_discription" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="driver_id" ColumnName="driver_id" />
+                <ScalarProperty Name="labour_id" ColumnName="labour_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="BagAndBaggageTransportModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="user_type" ColumnName="user_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tokens">
+            <EntityTypeMapping TypeName="BagAndBaggageTransportModel.token">
+              <MappingFragment StoreEntitySet="tokens">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="expire_date" ColumnName="expire_date" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="token_key" ColumnName="token_key" />
+                <ScalarProperty Name="token_id" ColumnName="token_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

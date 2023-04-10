@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="05aa97cdab004de8bb2a307b6524470d" Name="Diagram1">
+        <EntityTypeShape EntityType="BagAndBaggageTransportModel.activitylog" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BagAndBaggageTransportModel.admin" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BagAndBaggageTransportModel.customer" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BagAndBaggageTransportModel.driver" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BagAndBaggageTransportModel.labour" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BagAndBaggageTransportModel.labourwork" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BagAndBaggageTransportModel.manager" Width="1.5" PointX="3" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BagAndBaggageTransportModel.review" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BagAndBaggageTransportModel.sysdiagram" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BagAndBaggageTransportModel.tripe" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BagAndBaggageTransportModel.user" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="BagAndBaggageTransportModel.FK_admins_users" ManuallyRouted="false" />
+        <AssociationConnector Association="BagAndBaggageTransportModel.FK_customers_users" ManuallyRouted="false" />
+        <AssociationConnector Association="BagAndBaggageTransportModel.FK_reviews_customers" ManuallyRouted="false" />
+        <AssociationConnector Association="BagAndBaggageTransportModel.FK_tripes_customers" ManuallyRouted="false" />
+        <AssociationConnector Association="BagAndBaggageTransportModel.FK_drivers_managers" ManuallyRouted="false" />
+        <AssociationConnector Association="BagAndBaggageTransportModel.FK_drivers_users" ManuallyRouted="false" />
+        <AssociationConnector Association="BagAndBaggageTransportModel.FK_tripes_drivers" ManuallyRouted="false" />
+        <AssociationConnector Association="BagAndBaggageTransportModel.FK_labours_users" ManuallyRouted="false" />
+        <AssociationConnector Association="BagAndBaggageTransportModel.FK_managers_users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BagAndBaggageTransportModel.token" Width="1.5" PointX="5.375" PointY="3.75" />
+        <AssociationConnector Association="BagAndBaggageTransportModel.FK_tokens_users" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
